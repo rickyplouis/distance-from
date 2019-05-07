@@ -1,6 +1,6 @@
 # distance-from
 
-A zero dependency solution for quickly calculating distance between two coordinates
+Simple API for quickly calculating distance between two coordinates
 
 ### Installation
 ```js
@@ -16,7 +16,7 @@ const distFrom = require('distance-from');
 
 // defaults to kilometers if no units put in
 distFrom(chicago).to(ny).in('mi');
-// returns distance
+// returns distance using haversine formula with margin of error +/- 0.03%
 ```
 
 

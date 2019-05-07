@@ -4,7 +4,6 @@
   "description": "Calculate distance between two coordinates",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "nsp audit --audit-level high",
     "precommit": "lint-staged && npm run test",
     "test": "jest",
     "start": "node index.js",
