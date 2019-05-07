@@ -1,0 +1,80 @@
+{
+  "name": "distance-from",
+  "version": "1.0.0",
+  "description": "Calculate distance between two coordinates",
+  "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "nsp audit --audit-level high",
+    "pretest": "eslint .",
+    "precommit": "lint-staged && npm run test",
+    "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "start": "node index.js",
+    "clean": "node src/clean.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "printWidth": 90
+        }
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickyplouis/distance-from.git"
+  },
+  "keywords": [
+    "haversine",
+    "distance-from",
+    "coordinates",
+    "distance-between",
+    "distance",
+    "latitude",
+    "longitude"
+  ],
+  "author": "rickyplouis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rickyplouis/distance-from/issues"
+  },
+  "homepage": "https://github.com/rickyplouis/distance-from#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.16.1"
+  }
+}
