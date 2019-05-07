@@ -1,3 +1,5 @@
+## distance-from [![Build Status](https://travis-ci.org/rickyplouis/distance-from.svg?branch=master)](https://travis-ci.org/rickyplouis/distance-from) [![Coverage Status](https://coveralls.io/repos/github/rickyplouis/distance-from/badge.svg?branch=master)](https://coveralls.io/github/rickyplouis/distance-from?branch=master) [![npm version](https://badge.fury.io/js/distance-from.svg)](https://badge.fury.io/js/distance-from)
+
 # distance-from
 
 Simple API for quickly calculating distance between two coordinates
