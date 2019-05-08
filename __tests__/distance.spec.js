@@ -43,3 +43,17 @@ test('test invalid units', () => {
       .in('steps');
   }).toThrow();
 });
+
+test('test bad origin', () => {
+  expect(() => {
+    distFrom().to(london);
+  }).toThrow();
+});
+
+test('degree to radians with no input', () => {
+  expect(distFrom().degreeToRadians()).toEqual(0);
+});
+
+test('degree to radians with standard input', () => {
+  expect(parseInt(distFrom().degreeToRadians(100), 10)).toEqual(1);
+});
