@@ -3,7 +3,33 @@ const distFrom = require('../lib/index');
 const ny = [40.71278, -74.00594];
 const london = [51.50853, -0.12574];
 
-describe('distFrom().to().in()', () => {
+describe('distFrom().from().to()', () => {
+  test('throws for no origin', () => {
+    expect(() => {
+      distFrom().to(london);
+    }).toThrow();
+  });
+
+  test('throws for no destination', () => {
+    expect(() => {
+      distFrom(ny).to();
+    }).toThrow();
+  });
+
+  test('throws for bad origin', () => {
+    expect(() => {
+      distFrom('my house').to(london);
+    }).toThrow();
+  });
+
+  test('throws for bad destination', () => {
+    expect(() => {
+      distFrom(ny).to('my house');
+    }).toThrow();
+  });
+});
+
+describe('distFrom().from().to().in()', () => {
   test('gets distance from ny to london in kilometers', () => {
     expect(
       parseInt(
@@ -13,6 +39,17 @@ describe('distFrom().to().in()', () => {
         10
       )
     ).toBe(5570);
+  });
+
+  test('gets distance from ny to london in miles', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('miles'),
+        10
+      )
+    ).toBe(3461);
   });
 
   test('gets distance from ny to london in meters', () => {
@@ -26,6 +63,17 @@ describe('distFrom().to().in()', () => {
     ).toBe(5570315);
   });
 
+  test('gets distance from ny to london in feet', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('ft'),
+        10
+      )
+    ).toBe(18275313);
+  });
+
   test('test invalid units', () => {
     expect(() => {
       distFrom(ny)
@@ -35,7 +83,35 @@ describe('distFrom().to().in()', () => {
   });
 });
 
+describe('distFrom().validUnits()', () => {
+  test('throws with non string input', () => {
+    expect(() => {
+      distFrom().validUnits(true);
+    }).toThrow();
+  });
+
+  test('throws with no input', () => {
+    expect(() => {
+      distFrom().validUnits();
+    }).toThrow();
+  });
+
+  test('returns feet as valid unit', () => {
+    expect(distFrom().validUnits('feet')).toBeTruthy();
+  });
+
+  test('returns steps as invalid unit', () => {
+    expect(distFrom().validUnits('steps')).toBeFalsy();
+  });
+});
+
 describe('distFrom().degreeToRadians', () => {
+  test('degree to radians with no input', () => {
+    expect(() => {
+      distFrom().degreeToRadians('six');
+    }).toThrow();
+  });
+
   test('degree to radians with no input', () => {
     expect(distFrom().degreeToRadians()).toEqual(0);
   });
