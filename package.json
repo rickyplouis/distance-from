@@ -1,6 +1,6 @@
 {
   "name": "distance-from",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculate distance between two coordinates",
   "main": "index.js",
   "scripts": {
