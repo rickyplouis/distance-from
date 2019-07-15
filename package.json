@@ -2,7 +2,7 @@
   "name": "distance-from",
   "version": "1.0.1",
   "description": "Calculate distance between two coordinates",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "precommit": "lint-staged && npm run test",
     "test": "jest",
