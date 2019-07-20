@@ -12,7 +12,7 @@
     "release": "npm publish --access public",
     "build": "npm run clean && tsc -p tsconfig.json",
     "build:w": "tsc -p tsconfig.json -w",
-    "lint": "tslint -c tslint.json 'lib/**/*.ts' && eslint __tests__/** --fix"
+    "lint": "tslint -c tslint.json 'lib/**/*.ts' && lint-staged"
   },
   "jest": {
     "testEnvironment": "node",
