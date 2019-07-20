@@ -60,17 +60,6 @@ describe('distFrom().from().to().in()', () => {
     ).toBe(3461);
   });
 
-  test('gets distance from ny to london in feet', () => {
-    expect(
-      parseInt(
-        distFrom(ny)
-          .to(london)
-          .in('ft'),
-        10
-      )
-    ).toBe(18275313);
-  });
-
   test('gets distance from ny to london in meters', () => {
     expect(
       parseInt(
@@ -80,6 +69,17 @@ describe('distFrom().from().to().in()', () => {
         10
       )
     ).toBe(5570315);
+  });
+
+  test('gets distance from ny to london in feet', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('ft'),
+        10
+      )
+    ).toBe(18275313);
   });
 
   test('test invalid units', () => {
