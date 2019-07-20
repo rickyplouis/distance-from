@@ -4,10 +4,15 @@
   "description": "Calculate distance between two coordinates",
   "main": "lib/index.js",
   "scripts": {
-    "precommit": "lint-staged && npm run test",
-    "test": "jest",
+    "precommit": "npm run lint && npm run test",
+    "test": "npm run build && jest",
     "start": "node index.js",
-    "clean": "node src/clean.js"
+    "prepack": "npm run build",
+    "clean": "rm -rf ./dist",
+    "release": "npm publish --access public",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "build:w": "tsc -p tsconfig.json -w",
+    "lint": "tslint -c tslint.json 'lib/**/*.ts'"
   },
   "jest": {
     "testEnvironment": "node",
@@ -56,7 +61,9 @@
     "distance-between",
     "distance",
     "latitude",
-    "longitude"
+    "longitude",
+    "lat",
+    "long"
   ],
   "author": "rickyplouis",
   "license": "MIT",
@@ -65,17 +72,19 @@
   },
   "homepage": "https://github.com/rickyplouis/distance-from#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.12.1",
-    "eslint-config-prettier": "^3.6.0",
-    "eslint-config-xo": "^0.26.0",
-    "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "jest": "^23.6.0",
-    "lint-staged": "^8.1.0",
-    "prettier": "^1.16.1"
-  }
+    "prettier": "^1.16.1",
+    "@types/node": "^12.0.4",
+    "coveralls": "^3.0.3",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "amonad": "^0.8.2"
+  },
+  "contributors": [
+    "airtucha"
+  ]
 }
