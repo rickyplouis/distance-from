@@ -79,22 +79,23 @@ class DistanceFrom {
   }
 
   in( units: Units ) {
-
-    if (units === 'mi' || units === 'mile' || units === 'miles') {
-      this.distance = this.distance.bind(multiply(0.6213712))
-    } else if (units === 'm' || units === 'meter' || units === 'meters' || units === 'metre') {
-      this.distance = this.distance.bind(multiply(1000))
-    } else if (units === 'ft' || units === 'feet') {
-      this.distance = this.distance.bind(multiply(3280.84))
-    }
-
     return this.distance
-      .bind<number>( distance =>
+      .bind( distance =>
         this.validUnits(units) ?
-          Success(distance)
+          Success<number, Error>(distance)
           :
           Failure<number, Error>(new Error('Need to use valid units, run distFrom.unitList() to see list'))
       )
+      .bind( distance => {
+        if (units === 'mi' || units === 'mile' || units === 'miles')
+          return distance * 0.6213712
+        else if (units === 'm' || units === 'meter' || units === 'meters' || units === 'metre')
+          return distance * 1000
+        else if (units === 'ft' || units === 'feet')
+          return distance * 3280.84
+        else
+          return distance
+      })
       .getOrThrow()
   }
 
