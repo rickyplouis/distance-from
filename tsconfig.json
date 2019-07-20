@@ -15,11 +15,6 @@
   },
   "compileOnSave": true,
   "buildOnSave": true,
-  "files": [ "./lib/index.ts"],
-  "exclude": [
-    "**/*.spec.ts",
-    "dist",
-    "node_modules",
-    "__tests__"
-  ]
+  "files": ["./lib/index.ts"],
+  "exclude": ["**/*.spec.js", "dist", "node_modules", "__tests__"]
 }
