@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "noEmitHelpers": true,
+    "outDir": "dist",
+    "rootDir": "lib",
+    "pretty": true,
+    "declaration": true
+  },
+  "compileOnSave": true,
+  "buildOnSave": true,
+  "files": ["./lib/index.ts"],
+  "exclude": ["**/*.spec.js", "dist", "node_modules", "__tests__"]
+}

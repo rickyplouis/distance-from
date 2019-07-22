@@ -1,4 +1,4 @@
-const distFrom = require('../lib/index');
+const distFrom = require('../dist/index');
 
 const ny = [40.71278, -74.00594];
 const london = [51.50853, -0.12574];
@@ -25,6 +25,14 @@ describe('distFrom().from().to()', () => {
   test('throws for bad destination', () => {
     expect(() => {
       distFrom(ny).to('my house');
+    }).toThrow();
+  });
+});
+
+describe('distFrom().in()', () => {
+  test('gets distance without destination in miles', () => {
+    expect(() => {
+      distFrom(ny).in('miles');
     }).toThrow();
   });
 });
