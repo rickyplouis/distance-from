@@ -28,8 +28,8 @@ class DistanceFrom {
     // δ = 2·atan2(√(a), √(1−a))
     // see mathforum.org/library/drmath/view/51879.html for derivation
 
-    const sine = (num: number) => Math.sin(num / 2);
-    const cos = (num: number) => Math.cos(num);
+    const sine = (num: number) => Math.sin(num / 2)
+    const cos = (num: number) => Math.cos(num)
 
     const radius = 6371
     const φ1 = this.degreeToRadians(lat1)
@@ -40,7 +40,7 @@ class DistanceFrom {
     const Δλ = λ2 - λ1
 
     const a = sine(Δφ) * sine(Δφ) + cos(φ1) * cos(φ2) * Math.pow(sine(Δλ), 2)
-    return 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * radius;
+    return 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * radius
   }
 
   to( destination: Position) {
