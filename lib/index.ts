@@ -1,11 +1,11 @@
 import { Result, Failure, Success} from "amonad"
 
 type Position = [number, number]
-type Units = 'km' | 'kilometers' | 'm' | 'meters' | 'meter' | 'metre' | 'mi' | 'mile' | 'miles' | 'feet' | 'ft'
+type Units = 'km' | 'kilometers' | 'm' | 'meters' | 'meter' | 'metre' | 'mi' | 'mile' | 'miles' | 'feet' | 'ft' | 'yd' | 'yard' | 'yards'
 
 const multiply = (multiplier1: number) => (multiplier2: number) => multiplier1 * multiplier2
 
-const unitList: Units[] = ['km', 'kilometers', 'm', 'meters', 'meter', 'metre', 'mi', 'mile', 'miles', 'feet', 'ft']
+const unitList: Units[] = ['km', 'kilometers', 'm', 'meters', 'meter', 'metre', 'mi', 'mile', 'miles', 'feet', 'ft', 'yd', 'yard', 'yards']
 
 class DistanceFrom {
   private distance: Result<number, Error> = Failure(new Error("Destination is not configured, run distFrom.to()."))
@@ -28,6 +28,9 @@ class DistanceFrom {
     // δ = 2·atan2(√(a), √(1−a))
     // see mathforum.org/library/drmath/view/51879.html for derivation
 
+    const sine = (num: number) => Math.sin(num / 2);
+    const cos = (num: number) => Math.cos(num);
+
     const radius = 6371
     const φ1 = this.degreeToRadians(lat1)
     const λ1 = this.degreeToRadians(lon1)
@@ -36,13 +39,8 @@ class DistanceFrom {
     const Δφ = φ2 - φ1
     const Δλ = λ2 - λ1
 
-    const a =
-      Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-    const d = radius * c
-
-    return d
+    const a = sine(Δφ) * sine(Δφ) + cos(φ1) * cos(φ2) * Math.pow(sine(Δλ), 2)
+    return 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * radius;
   }
 
   to( destination: Position) {
@@ -86,6 +84,8 @@ class DistanceFrom {
       this.distance = this.distance.bind(multiply(1000))
     } else if (units === 'ft' || units === 'feet') {
       this.distance = this.distance.bind(multiply(3280.84))
+    } else if (units === 'yd' || units === 'yard' || units === 'yards') {
+      this.distance = this.distance.bind(multiply(1093.61))
     }
 
     return this.distance
@@ -106,4 +106,3 @@ class DistanceFrom {
 module.exports = function (val) {
   return new DistanceFrom(val)
 }
-

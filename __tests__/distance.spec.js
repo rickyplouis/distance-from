@@ -71,6 +71,17 @@ describe('distFrom().from().to().in()', () => {
     ).toBe(5570315);
   });
 
+  test('gets distance from ny to london in yards', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('yards'),
+        10
+      )
+    ).toBe(6091752);
+  });
+
   test('gets distance from ny to london in feet', () => {
     expect(
       parseInt(
