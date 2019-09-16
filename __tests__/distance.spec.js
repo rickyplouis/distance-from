@@ -93,6 +93,12 @@ describe('distFrom().from().to().in()', () => {
     ).toBe(18275313);
   });
 
+  test('gets distance from ny to london in two twice', () => {
+    const dist = distFrom(ny).to(london);
+    expect(parseInt(dist.in('m'), 10)).toBe(5570315);
+    expect(parseInt(dist.in('m'), 10)).toBe(5570315);
+  });
+
   test('test invalid units', () => {
     expect(() => {
       distFrom(ny)
