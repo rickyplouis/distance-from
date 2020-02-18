@@ -28,6 +28,7 @@ distFrom(chicago).to(ny).in('mi');
 * cm || centimeter || centimeters
 * mi || mile || miles
 * ft || feet
+* in || inch || inches
 * yd || yard || yards
 
 ### License
