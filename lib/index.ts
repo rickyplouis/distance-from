@@ -1,11 +1,9 @@
 import { Result, Failure, Success} from "amonad"
 
 type Position = [number, number]
-type Units = 'km' | 'kilometers' | 'm' | 'meters' | 'meter' | 'metre' | 'mi' | 'mile' | 'miles' | 'feet' | 'ft' | 'yd' | 'yard' | 'yards'
+type Units = 'km' | 'kilometer' | 'kilometers' | 'm' | 'meters' | 'meter' | 'metre' | 'cm' | 'centimeter' | 'centimeters' | 'mi' | 'mile' | 'miles' | 'feet' | 'ft' | 'in' | 'inch' | 'inches' | 'yd' | 'yard' | 'yards'
 
-const multiply = (multiplier1: number) => (multiplier2: number) => multiplier1 * multiplier2
-
-const unitList: Units[] = ['km', 'kilometers', 'm', 'meters', 'meter', 'metre', 'mi', 'mile', 'miles', 'feet', 'ft', 'yd', 'yard', 'yards']
+const unitList: Units[] = ['km', 'kilometers', 'kilometers', 'm', 'meters', 'meter', 'metre', 'cm', 'centimeter', 'centimeters', 'mi', 'mile', 'miles', 'feet', 'ft', 'in', 'inch', 'inches', 'yd', 'yard', 'yards']
 
 class DistanceFrom {
   private distance: Result<number, Error> = Failure(new Error("Destination is not configured, run distFrom.to()."))
@@ -89,6 +87,10 @@ class DistanceFrom {
           return distance * 0.6213712
         else if (units === 'm' || units === 'meter' || units === 'meters' || units === 'metre')
           return distance * 1000
+        else if (units === 'cm' || units === 'centimeter' || units === 'centimeters')
+          return distance * 100000
+        else if (units === 'in' || units === 'inch' || units === 'inches')
+          return distance * 39370.1
         else if (units === 'ft' || units === 'feet')
           return distance * 3280.84
         else if (units === 'yd' || units === 'yard' || units === 'yards')
@@ -104,6 +106,6 @@ class DistanceFrom {
   }
 }
 
-module.exports = function (val) {
+module.exports = function (val: Position) {
   return new DistanceFrom(val)
 }

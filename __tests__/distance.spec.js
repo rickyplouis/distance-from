@@ -49,17 +49,6 @@ describe('distFrom().from().to().in()', () => {
     ).toBe(5570);
   });
 
-  test('gets distance from ny to london in miles', () => {
-    expect(
-      parseInt(
-        distFrom(ny)
-          .to(london)
-          .in('miles'),
-        10
-      )
-    ).toBe(3461);
-  });
-
   test('gets distance from ny to london in meters', () => {
     expect(
       parseInt(
@@ -71,6 +60,28 @@ describe('distFrom().from().to().in()', () => {
     ).toBe(5570315);
   });
 
+  test('gets distance from ny to london in centimeters', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('cm'),
+        10
+      )
+    ).toBe(557031545);
+  });
+
+  test('gets distance from ny to london in miles', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('miles'),
+        10
+      )
+    ).toBe(3461);
+  });
+
   test('gets distance from ny to london in yards', () => {
     expect(
       parseInt(
@@ -80,6 +91,17 @@ describe('distFrom().from().to().in()', () => {
         10
       )
     ).toBe(6091752);
+  });
+
+  test('gets distance from ny to london in kilometers', () => {
+    expect(
+      parseInt(
+        distFrom(ny)
+          .to(london)
+          .in('inches'),
+        10
+      )
+    ).toBe(219303876);
   });
 
   test('gets distance from ny to london in feet', () => {
