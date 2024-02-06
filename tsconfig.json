@@ -15,6 +15,6 @@
   },
   "compileOnSave": true,
   "buildOnSave": true,
-  "files": ["./lib/index.ts", "./lib/Places.ts"],
+  "files": ["./lib/index.ts", "lib/places.ts"],
   "exclude": ["**/*.spec.js", "dist", "node_modules", "__tests__"]
 }
