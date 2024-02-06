@@ -3,8 +3,34 @@
 // More info here: https://developers.google.com/maps/documentation/javascript/coordinates#:~:text=World%20coordinates%20in%20Google%20Maps,towards%20the%20south%20(down).
 
 // If a place is missing that you'd like to add feel free to open a PR
+export type Lat = number
+export type Lng = number
+export type City = [Lat, Lng]
 
-export const usa = {
+export type UnitedStates = {
+  il: {
+    naperville: City
+    chicago: City
+    streamwood: City
+  }
+  ny: {
+    newYorkCity: City
+  }
+  mo: {
+    kansasCity: City
+  }
+  mi: {
+    detroit: City
+    troy: City
+  }
+  ca: {
+    losAngeles: City
+    sanJose: City
+    sanFrancisco: City
+  }
+}
+
+export const usa: UnitedStates = {
   il: {
     naperville: [41.81023757023769, -88.2282830073452],
     chicago: [42.01682819245601, -87.3011661732315],
@@ -27,11 +53,11 @@ export const usa = {
   },
 }
 
-export function listOfSupportedStates() {
+export function listOfSupportedStates(): string[] {
   return Object.keys(usa).sort()
 }
 
-export function listOfSupportedCities() {
+export function listOfSupportedCities(): string[] {
   const states = listOfSupportedStates()
   let cities: string[] = []
 
