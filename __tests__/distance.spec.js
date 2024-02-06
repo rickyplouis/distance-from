@@ -1,10 +1,7 @@
 const distFrom = require('../dist/index')
-const places = require('../dist/places')
 
 const ny = [40.79500901101372, -74.12456877495657]
-const chitown = places().usa().il.chicago
-const listOfCities = places().listOfSupportedCities()
-const listOfStates = places().listOfSupportedStates()
+const chitown = distFrom().places().usa.il.chicago
 const london = [51.53269844455333, -0.07741875190006414]
 
 describe('distFrom().from().to()', () => {
@@ -114,10 +111,12 @@ describe('places.usa...', () => {
     expect(() => chitown).toBeTruthy()
   })
   test('get list of supported states and expect them to match the hardcoded list', () => {
-    expect(listOfStates).toEqual(['il', 'ny', 'ca', 'mo', 'mi'].sort())
+    expect(distFrom().listOfSupportedStates()).toEqual(
+      ['il', 'ny', 'ca', 'mo', 'mi'].sort(),
+    )
   })
   test('get list of supported cities and expect them to exist', () => {
-    expect(listOfCities).toBeTruthy()
+    expect(distFrom().listOfSupportedCities).toBeTruthy()
   })
 })
 
