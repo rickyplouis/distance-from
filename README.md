@@ -24,15 +24,15 @@ distFrom(chicago).to(ny).in('mi')
 // returns distance using haversine formula with margin of error +/- 0.03%
 
 // Additionally we also have a hardcoded list of places from the US you can use
-const Places = require('../dist/Places')
+const places = require('../dist/Places')
 
-distFrom(Places.usa.il.chicago).to(Places.usa.ny.newYorkCity).in('mi')
+distFrom(places().usa().il.chicago).to(places().usa().ny.newYorkCity).in('mi')
 
 // To see a list of all supported states you can use
-Places.listOfSupportedStates()
+places().listOfSupportedStates()
 
 // Or all the cities you can use
-Places.listOfSupportedCities()
+places().listOfSupportedCities()
 
 // If you don't see a state/city in the list then feel free to open a PR
 ```
