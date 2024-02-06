@@ -52,7 +52,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rickyplouis/distance-from.git"
+    "url": "https://github.com/your-user/repo-url.git"
   },
   "keywords": [
     "haversine",
