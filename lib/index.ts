@@ -88,7 +88,7 @@ type Distance = DistanceFrom
 class DistanceFrom {
   private distance: number | undefined
 
-  constructor(private readonly origin: distanceFrom.Position) {}
+  constructor(private readonly origin: distanceFrom.Position | undefined) {}
 
   degreeToRadians(degrees = 0) {
     // Math.PI / 180
@@ -234,7 +234,7 @@ class DistanceFrom {
   }
 }
 
-function distanceFrom(val: distanceFrom.Position) {
+function distanceFrom(val?: distanceFrom.Position | undefined) {
   return new DistanceFrom(val)
 }
 
