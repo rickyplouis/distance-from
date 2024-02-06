@@ -5,33 +5,50 @@
 Simple API for quickly calculating distance between two coordinates
 
 ### Installation
+
 ```js
 $ npm i distance-from
 ```
+
 ### Example
+
 ```js
 // Use format of [lat, lng]
-const chicago = [41.977226, -87.836723];
-const ny = [40.730610, -73.935242];
+const chicago = [42.01682819245601, -87.3011661732315]
+const ny = [40.79500901101372, -74.12456877495657]
 
-const distFrom = require('distance-from');
+const distFrom = require('distance-from')
 
 // defaults to kilometers if no units put in
-distFrom(chicago).to(ny).in('mi');
+distFrom(chicago).to(ny).in('mi')
 // returns distance using haversine formula with margin of error +/- 0.03%
+
+// Additionally we also have a hardcoded list of places from the US you can use
+const Places = require('../dist/Places')
+
+distFrom(Places.usa.il.chicago).to(Places.usa.ny.newYorkCity).in('mi')
+
+// To see a list of all supported states you can use
+Places.listOfSupportedStates()
+
+// Or all the cities you can use
+Places.listOfSupportedCities()
+
+// If you don't see a state/city in the list then feel free to open a PR
 ```
 
-
 #### Supported units
-* km || kilometer || kilometers
-* m || meter || meters
-* cm || centimeter || centimeters
-* mi || mile || miles
-* ft || feet
-* in || inch || inches
-* yd || yard || yards
+
+- km || kilometer || kilometers
+- m || meter || meters
+- cm || centimeter || centimeters
+- mi || mile || miles
+- ft || feet
+- in || inch || inches
+- yd || yard || yards
 
 ### License
+
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
